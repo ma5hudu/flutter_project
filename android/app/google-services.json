@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "409995153841",
+    "project_id": "lift-sync-ca841",
+    "storage_bucket": "lift-sync-ca841.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:409995153841:android:267badba4ac81c26682d90",
+        "android_client_info": {
+          "package_name": "com.example.lift_sync"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBYJQOiYI4kzo-HnYnXWmJIv1qu3ZFu2Vk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
