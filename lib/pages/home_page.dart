@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:lift_sync/model/lifts_view_model.dart';
 import 'package:lift_sync/pages/navigation.dart';
+import 'package:lift_sync/pages/offer_lift.dart';
+import 'package:lift_sync/pages/search_lift.dart';
 import 'package:provider/provider.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -38,22 +40,22 @@ class _MyHomePageState extends State<MyHomePage> {
         automaticallyImplyLeading: false,
       ),
       body: Container(
-        decoration: const BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage('assets/images/home.jpg'),
-            fit: BoxFit.cover,
-          ),
-        ),
+        // decoration: const BoxDecoration(
+        //   image: DecorationImage(
+        //     // image: AssetImage('assets/images/home.jpg'),
+        //     fit: BoxFit.cover,
+        //   ),
+        // ),
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center, // Center vertically
             children: [
               ElevatedButton(
                 onPressed: () {
-                  // Navigator.of(context)
-                  //     .push(MaterialPageRoute(builder: (context) {
-                  //   return const CreateLift();
-                  // }));
+                  Navigator.of(context)
+                      .push(MaterialPageRoute(builder: (context) {
+                    return const CreateLift();
+                  }));
                 },
                 style: ElevatedButton.styleFrom(
                   shape: RoundedRectangleBorder(
@@ -78,7 +80,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       builder: (context) {
                         return ChangeNotifierProvider(
                           create: (context) => LiftsViewModel(),
-                          // child: const SearchLift(),
+                          child: const SearchLift(),
                         );
                       },
                     ),

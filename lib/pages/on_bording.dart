@@ -1,9 +1,11 @@
 import 'package:firebase_auth/firebase_auth.dart' hide EmailAuthProvider;
 import 'package:firebase_ui_auth/firebase_ui_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:lift_sync/model/firebase_user.dart';
 import 'package:lift_sync/model/lifts_view_model.dart';
 import 'package:lift_sync/pages/home_page.dart';
 import 'package:provider/provider.dart';
+
 
 
 class OnBording extends StatelessWidget {
@@ -51,7 +53,7 @@ class OnBording extends StatelessWidget {
               },
             );
           }
-          // Users.addCurrentUserToFirestore();
+          Users.addCurrentUserToFirestore();
 
           return ChangeNotifierProvider(
             create: (_) => LiftsViewModel(),

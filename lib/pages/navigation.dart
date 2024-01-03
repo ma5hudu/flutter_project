@@ -1,8 +1,10 @@
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_ui_auth/firebase_ui_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:lift_sync/model/lift.dart';
 import 'package:lift_sync/model/lifts_view_model.dart';
+import 'package:lift_sync/pages/my_bookings.dart';
+import 'package:lift_sync/pages/my_lifts.dart';
 import 'package:provider/provider.dart';
 
 class NavBar extends StatefulWidget {
@@ -14,12 +16,20 @@ class NavBar extends StatefulWidget {
 
 class _NavBarState extends State<NavBar> {
   User? currentUser = FirebaseAuth.instance.currentUser;
+
+  // XFile? imageFile;
+
   @override
   void initState() {
     super.initState();
   }
 
-
+  // Future<void> _getFromGallery(ImageSource source) async {
+  //   final XFile? pickedImage = await ImagePicker().pickImage(source: source);
+  //   setState(() {
+  //     imageFile = pickedImage;
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -34,8 +44,8 @@ class _NavBarState extends State<NavBar> {
               ? Text(currentUser?.email ?? '')
               : const Text(''),
           currentAccountPicture: GestureDetector(
-            onTap: ()  {
-              
+            onTap: (){
+              // await _getFromGallery(ImageSource.gallery);
             },
             child: CircleAvatar(
               child: Icon(Icons.person),
@@ -84,7 +94,7 @@ class _NavBarState extends State<NavBar> {
                 builder: (context) {
                   return ChangeNotifierProvider(
                     create: (context) => LiftsViewModel(),
-                    // child: const ViewLifts(),
+                    child: const ViewLifts(),
                   );
                 },
               ),
@@ -95,7 +105,26 @@ class _NavBarState extends State<NavBar> {
           leading: const Icon(Icons.perm_contact_cal_outlined),
           title: const Text('My Bookings'),
           onTap: () {
-
+                Lift lift = Lift(
+      id: 'someId',
+      ownerId: 'someOwnerId',
+      departureTown: 'Departure Town',
+      departureStreet: 'Departure Street',
+      departureDateTime: DateTime.now(),
+      destination: 'Destination',
+      destinationStreet: 'Destination Street',
+      seats: 3,
+    );
+                Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) {
+                  return ChangeNotifierProvider(
+                    create: (context) => LiftsViewModel(),
+                    child:  BookingsDetails(lift: lift,),
+                  );
+                },
+              ),
+            );
           },
         ),
         ListTile(
